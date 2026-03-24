@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%; /* #0B0B0D equivalent in HSL */
+    --foreground: 0 0% 96%; /* #F5F5F5 equivalent */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 96%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 46 65% 52%; /* Gold #D4AF37 */
+    --primary-foreground: 240 10% 3.9%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%; /* #A0A0A0 equivalent */
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 46 65% 52%; /* Gold ring */
+    --radius: 0.75rem;
+
+    /* RaaS Design System */
+    --raas-deep-navy: #0F172A;
+    --raas-black: #000000;
+    --raas-electric-blue: #0EA5E9;
+    --raas-dark-navy: #1E293B;
+    --raas-white: #FFFFFF;
+    --raas-light-gray: #E2E8F0;
+    --raas-bright-electric: #06B6D4;
+  }
+
+  * {
+    @apply border-[#3A3F47];
+  }
+  
+  html {
+    font-size: 16px; 
+  }
+
+  body {
+    @apply bg-[#0B0B0D] text-[#F5F5F5] antialiased selection:bg-[#D4AF37]/30;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px; 
+    line-height: 1.7; 
+  }
+
+  /* Core headings use Playfair Display for global brand */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, Cambria, "Times New Roman", Times, serif;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  p, span, li, a, button, input, textarea, label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-gold {
+    @apply text-[#D4AF37];
+  }
+  .bg-gold {
+    @apply bg-[#D4AF37];
+  }
+  .border-gold {
+    @apply border-[#D4AF37];
+  }
+
+  /* RaaS Typography Tokens */
+  .raas-h1 { @apply text-[48px] font-bold font-sans text-[var(--raas-white)] leading-tight; }
+  .raas-h2 { @apply text-[36px] font-bold font-sans text-[var(--raas-white)] leading-snug; }
+  .raas-h3 { @apply text-[24px] font-semibold font-sans text-[var(--raas-white)]; }
+  .raas-body { @apply text-[16px] font-normal font-sans text-[var(--raas-light-gray)]; }
+  .raas-label { @apply text-[14px] font-medium font-sans text-[var(--raas-light-gray)]; }
+  .raas-cta { @apply text-[16px] font-bold font-sans text-[var(--raas-white)]; }
+
+  /* RaaS Layout & Grid Utilities */
+  .raas-container { @apply max-w-[1400px] mx-auto px-[30px] lg:px-[60px]; }
+  .raas-grid-4 { @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6; }
+  .raas-grid-3 { @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6; }
+
+  /* RaaS Card Styles */
+  .raas-card {
+    @apply bg-[var(--raas-dark-navy)] border-2 border-[var(--raas-electric-blue)] rounded-2xl p-[32px] lg:p-[40px] transition-all duration-300 ease-in-out relative overflow-hidden;
+  }
+  .raas-card:hover {
+    @apply shadow-[0_0_20px_rgba(14,165,233,0.4)] border-[var(--raas-bright-electric)] -translate-y-2;
+  }
+}
