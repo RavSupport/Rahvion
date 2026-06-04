@@ -71,6 +71,9 @@ const Footer = () => {
               <Link to="/personal-it-toolkit" className="block text-base text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">
                 Personal IT Toolkit
               </Link>
+              <Link to="/highlevel-crm-training" className="block text-base text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">
+                HighLevel CRM Training
+              </Link>
               <Link to="/tools" className="block text-base text-[#A0A0A0] hover:text-[#D4AF37] transition-colors">
                 Free Tools Hub
               </Link>

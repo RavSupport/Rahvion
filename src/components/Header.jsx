@@ -13,6 +13,7 @@ const Header = () => {
     { name: 'Services', path: '/services' },
     { name: 'RaaS', path: '/raas' }, // Robotics-as-a-Service
     { name: 'IT Toolkit', path: '/personal-it-toolkit' }, 
+    { name: 'HighLevel CRM Training', path: '/highlevel-crm-training' },
     { name: 'AI Automations', path: '/ai-automations' },
     { name: 'Safety Academy', path: '/safety-academy' },
     { name: 'Warranty Help', path: '/warranty-concierge' },
