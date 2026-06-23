@@ -11,7 +11,7 @@
 - [Privacy Policy - Rahvion](/privacy): Rahvion
 - [Privacy Policy - Rahvion](/privacypolicy): Rahvion Privacy Policy. How we collect, use, and protect your personal information.
 - [Privacy Rights | Rahvion, LLC](/privacyrights): Exercise your rights under the Maryland Online Data Privacy Act.
-- [Robotics-as-a-Service (RaaS) | Rahvion, LLC | Warehouse Automation Solutions](/raas): Deploy autonomous robots on-demand. Scale your warehouse fleet with the seasons. Rahvion RaaS: No capital cost, full maintenance included, Rahvion AOS™ managed.
+- [Robotics-as-a-Service | Rahvion](/raas): Rahvion Robotics-as-a-Service provides advisory support for robotics setup, automation planning, device onboarding, and workflow support.
 - [Scam & Fraud Protection Guide - Detailed Threat Information | Rahvion](/scamfraudprotection): Comprehensive guide to recognizing and preventing phishing, tech support scams, social engineering, deepfakes, identity theft, and ransomware.
 - [Security & Digital Protection - AI Threat Verification | Rahvion](/security): Human verification of AI threats and deepfakes. Learn how Rahvion helps Maryland households navigate digital security challenges.
 - [Service Terms | Rahvion, LLC](/serviceterms): Specific Service Terms regarding emergencies, backups, hardware limitations, and liability for Rahvion support services.
@@ -21,3 +21,4 @@
 - [Terms of Service - Rahvion](/terms): Terms of Service. Rahvion is an advisory service, not insurance.
 - [Terms of Service | Rahvion, LLC](/termsofservice): Terms of Service for Rahvion, LLC. Please read these terms carefully before using our services.
 - [Website Design & Digital Architecture - Rahvion](/websitedesign): Professional website design with Lighthouse scores 95+. Custom-scoped digital architecture for local businesses and personal brands in Maryland.
+- [Windows Experience Index Guide | Rahvion — Personal IT Department](/windowsexperienceindex): Learn how to check your Windows Experience Index (WEI) scores in Windows 11 using WinSAT via PowerShell. Understand CPU, RAM, Graphics, and Disk scores and what they mean for your PC.
