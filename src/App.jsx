@@ -36,6 +36,7 @@ import UsefulToolsHubPage from '@/pages/UsefulToolsHubPage';
 import PersonalITToolkitPage from '@/pages/PersonalITToolkitPage';
 import RaaSPage from '@/pages/RaaSPage';
 import HighLevelTrainingPage from '@/pages/HighLevelTrainingPage';
+import WindowsExperienceIndexPage from '@/pages/WindowsExperienceIndexPage';
 
 // ScrollToTop Component to handle scroll reset on route change
 const ScrollToTop = () => {
@@ -86,6 +87,7 @@ function App() {
           <Route path="/tools" element={<UsefulToolsHubPage />} />
           <Route path="/personal-it-toolkit" element={<PersonalITToolkitPage />} />
           <Route path="/highlevel-crm-training" element={<HighLevelTrainingPage />} />
+          <Route path="/windows-experience-index" element={<WindowsExperienceIndexPage />} />
           <Route path="/non-member-support" element={<NonMemberSupportPage />} />
           <Route path="/technical-education" element={<TechnicalEducationPage />} />
           <Route path="/careers" element={<CareersPage />} />
