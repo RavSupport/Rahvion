@@ -36,6 +36,7 @@ import UsefulToolsHubPage from '@/pages/UsefulToolsHubPage';
 import PersonalITToolkitPage from '@/pages/PersonalITToolkitPage';
 import RaaSPage from '@/pages/RaaSPage';
 import HighLevelTrainingPage from '@/pages/HighLevelTrainingPage';
+import BookNowPage from '@/pages/BookNowPage';
 
 // ScrollToTop Component to handle scroll reset on route change
 const ScrollToTop = () => {
@@ -92,6 +93,7 @@ function App() {
           <Route path="/privacy-rights" element={<PrivacyRightsPage />} />
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/book-now" element={<BookNowPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/cookies" element={<CookiesPage />} />

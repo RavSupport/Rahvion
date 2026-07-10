@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, CalendarCheck } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -56,12 +57,26 @@ const Header = () => {
                 )}
               </Link>
             ))}
-            {/* Phone number for desktop */}
+            {/* Persistent CTAs for desktop */}
             <div className="flex flex-col items-end">
-                <a href="tel:+14104298159" className="flex items-center space-x-2 ml-4 text-[#0B0B0D] hover:text-[#0B0B0D]/80 transition-colors text-sm font-bold bg-[#D4AF37] px-4 py-2 rounded-full shadow-lg tracking-wide mb-1 border border-[#D4AF37]">
-                  <Phone size={16} fill="currentColor" />
-                  <span>Call Support: 410-429-8159</span>
-                </a>
+                <div className="flex items-center gap-2 mb-1">
+                  <Link
+                    to="/book-now"
+                    onClick={() => trackEvent('cta_book_now_click', { location: 'header' })}
+                    className="flex items-center space-x-2 ml-4 text-[#D4AF37] hover:text-[#F5F5F5] transition-colors text-sm font-bold bg-transparent px-4 py-2 rounded-full shadow-lg tracking-wide border border-[#D4AF37]"
+                  >
+                    <CalendarCheck size={16} />
+                    <span>Book Now</span>
+                  </Link>
+                  <a
+                    href="tel:+14104298159"
+                    onClick={() => trackEvent('cta_phone_click', { location: 'header' })}
+                    className="flex items-center space-x-2 text-[#0B0B0D] hover:text-[#0B0B0D]/80 transition-colors text-sm font-bold bg-[#D4AF37] px-4 py-2 rounded-full shadow-lg tracking-wide border border-[#D4AF37]"
+                  >
+                    <Phone size={16} fill="currentColor" />
+                    <span>Call Support: 410-429-8159</span>
+                  </a>
+                </div>
                 <span className="text-xs text-[#A0A0A0] pr-4">Media: 443-219-7559</span>
             </div>
           </div>
@@ -70,6 +85,8 @@ const Header = () => {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="xl:hidden text-[#F5F5F5] z-50 hover:text-[#D4AF37] transition-colors"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -96,9 +113,27 @@ const Header = () => {
                   {link.name}
                 </Link>
               ))}
-              {/* Phone numbers for mobile */}
+              {/* Phone numbers and Book Now for mobile */}
               <div className="mt-6 border-t border-[#3A3F47] pt-4 px-4 space-y-4">
-                  <a href="tel:+14104298159" onClick={() => setMobileMenuOpen(false)} className="flex items-center space-x-3 py-4 text-xl font-bold text-[#0B0B0D] bg-[#D4AF37] rounded-full justify-center shadow-lg transition-transform hover:scale-105">
+                  <Link
+                    to="/book-now"
+                    onClick={() => {
+                      trackEvent('cta_book_now_click', { location: 'mobile_menu' });
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex items-center space-x-3 py-4 text-xl font-bold text-[#D4AF37] bg-transparent border border-[#D4AF37] rounded-full justify-center shadow-lg transition-transform hover:scale-105"
+                  >
+                    <CalendarCheck size={24} />
+                    <span>Book Now</span>
+                  </Link>
+                  <a
+                    href="tel:+14104298159"
+                    onClick={() => {
+                      trackEvent('cta_phone_click', { location: 'mobile_menu' });
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex items-center space-x-3 py-4 text-xl font-bold text-[#0B0B0D] bg-[#D4AF37] rounded-full justify-center shadow-lg transition-transform hover:scale-105"
+                  >
                     <Phone size={24} fill="currentColor" />
                     <span>Call Support: 410-429-8159</span>
                   </a>

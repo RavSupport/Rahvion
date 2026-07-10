@@ -1,6 +1,7 @@
 ## Pages
 - [About Us - Rahvion](/aboutus): Learn about Rahvion
 - [AI Automations for Home | Smart Home AI | Rahvion](/aiautomations): Explore Rahvion
+- [Book Now | Rahvion Residential IT Support](/booknow): Book a home technology consultation with Rahvion. Serving Bel Air, Harford County, and the Mid-Atlantic region.
 - [Careers | Rahvion, LLC](/careers): Join our team. US-Based Technical Support and Global Web Development opportunities available.
 - [Contact Rahvion | IT Support Phone Number | Tech Help Desk](/contact): Contact Rahvion for home IT support. Support Line: 410-429-8159. We serve homeowners in Maryland, Virginia, DC, and beyond.
 - [Cookie Policy - Rahvion](/cookies): No description available
@@ -11,7 +12,7 @@
 - [Privacy Policy - Rahvion](/privacy): Rahvion
 - [Privacy Policy - Rahvion](/privacypolicy): Rahvion Privacy Policy. How we collect, use, and protect your personal information.
 - [Privacy Rights | Rahvion, LLC](/privacyrights): Exercise your rights under the Maryland Online Data Privacy Act.
-- [Robotics-as-a-Service (RaaS) | Rahvion, LLC | Warehouse Automation Solutions](/raas): Deploy autonomous robots on-demand. Scale your warehouse fleet with the seasons. Rahvion RaaS: No capital cost, full maintenance included, Rahvion AOS™ managed.
+- [Robotics-as-a-Service | Rahvion](/raas): Rahvion Robotics-as-a-Service provides advisory support for robotics setup, automation planning, device onboarding, and workflow support.
 - [Scam & Fraud Protection Guide - Detailed Threat Information | Rahvion](/scamfraudprotection): Comprehensive guide to recognizing and preventing phishing, tech support scams, social engineering, deepfakes, identity theft, and ransomware.
 - [Security & Digital Protection - AI Threat Verification | Rahvion](/security): Human verification of AI threats and deepfakes. Learn how Rahvion helps Maryland households navigate digital security challenges.
 - [Service Terms | Rahvion, LLC](/serviceterms): Specific Service Terms regarding emergencies, backups, hardware limitations, and liability for Rahvion support services.

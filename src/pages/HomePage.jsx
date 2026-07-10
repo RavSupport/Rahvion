@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, ArrowRight, Check, Star, Brain, LayoutDashboard as Desktop, Smartphone, X, Laptop, AlertCircle, Phone } from 'lucide-react';
+import { Shield, ArrowRight, Check, Brain, LayoutDashboard as Desktop, Smartphone, X, Laptop, AlertCircle, Phone, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MathGridBackground from '@/components/MathGridBackground';
 import PageTransition from '@/components/PageTransition';
+import TrustSection from '@/components/TrustSection';
+import ServiceAreas from '@/components/ServiceAreas';
+import { trackEvent } from '@/lib/analytics';
+import { startCheckout } from '@/lib/stripe';
+
+const CORE_PLAN_FALLBACK_URL = 'https://buy.stripe.com/4gMdR9eooaGYgEwa7d6kg00';
 
 const HomePage = () => {
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleActivateCore = async () => {
+    setIsCheckingOut(true);
+    trackEvent('checkout_start', { plan: 'core' });
+    try {
+      const url = await startCheckout();
+      window.location.href = url;
+    } catch (err) {
+      window.open(CORE_PLAN_FALLBACK_URL, '_blank', 'noopener,noreferrer');
+    } finally {
+      setIsCheckingOut(false);
+    }
+  };
+
   // Task 3: Updated Services Grid (4 Blocks)
   const servicePillars = [
     {
@@ -99,6 +120,7 @@ const HomePage = () => {
             backgroundImage: 'url(https://images.unsplash.com/photo-1629360067822-89c74b25bb66)',
             filter: 'brightness(0.3) saturate(0.8)'
           }}
+          role="img"
           aria-label="Warm residential home setting"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-[#0B0B0D]/50 to-transparent" />
@@ -262,35 +284,34 @@ const HomePage = () => {
                Why pay a retailer $200 for one fix? Core keeps your tech fast and your data safe 365 days a year.
             </p>
 
-            <a href="https://buy.stripe.com/4gMdR9eooaGYgEwa7d6kg00" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="bg-[#D4AF37] text-[#0B0B0D] hover:bg-[#F5F5F5] font-bold px-10 py-6 rounded-full shadow-lg transition-transform hover:scale-105">
-                 Activate Core Plan
-              </Button>
-            </a>
+            <Button
+              size="lg"
+              onClick={handleActivateCore}
+              disabled={isCheckingOut}
+              className="bg-[#D4AF37] text-[#0B0B0D] hover:bg-[#F5F5F5] font-bold px-10 py-6 rounded-full shadow-lg transition-transform hover:scale-105"
+            >
+              {isCheckingOut ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Redirecting...
+                </>
+              ) : (
+                'Activate Core Plan'
+              )}
+            </Button>
          </div>
       </section>
 
-      {/* Task 5: Testimonial Section (Injected) */}
-      <section className="py-20 bg-[#0B0B0D]">
-         <div className="container mx-auto px-4 text-center max-w-3xl">
-            <div className="flex justify-center gap-1 mb-6">
-               {[1,2,3,4,5].map(i => <Star key={i} size={20} className="text-[#D4AF37] fill-[#D4AF37]" />)}
-            </div>
-            <blockquote className="text-2xl md:text-3xl font-serif text-[#F5F5F5] italic leading-relaxed mb-6">
-               "Bel Air Local: 'Rahvion flagged a scam email that looked 100% real. They saved me from a major headache!'"
-            </blockquote>
-            <cite className="text-[#A0A0A0] not-italic font-medium tracking-wide">
-               — Bel Air Local
-            </cite>
-         </div>
-      </section>
+      <TrustSection />
 
-      {/* Task 3: Updated Services Grid (Replaces old pillars) */}
-      <section className="py-32 relative bg-[#0B0B0D] border-t border-[#3A3F47]">
+      {/* Services Grid */}
+      <section className="py-32 relative bg-[#0B0B0D] border-t border-[#3A3F47]" aria-labelledby="service-offerings-heading">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3A3F47] to-transparent" />
         <MathGridBackground />
-        
+
         <div className="container mx-auto px-4 relative z-10">
+          <h2 id="service-offerings-heading" className="font-serif text-3xl md:text-4xl font-bold text-[#F5F5F5] text-center mb-16">
+            Our Service Offerings
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {servicePillars.map((pillar, index) => (
               <Link key={index} to="/services" className="group h-full">
@@ -336,6 +357,8 @@ const HomePage = () => {
          </div>
       </section>
 
+      <ServiceAreas />
+
       {/* Why Choose Rahvion - as a contact option */}
       <section className="py-32 relative bg-[#0B0B0D]">
         <MathGridBackground />
@@ -351,10 +374,23 @@ const HomePage = () => {
             <p className="text-[#A0A0A0] text-xl mb-10 font-light">
               Talk to our team about securing your home network and devices today.
             </p>
-            <a href="tel:+14104298159" className="inline-flex items-center justify-center space-x-3 bg-[#0B0B0D] hover:bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37] font-medium py-4 px-8 rounded-full shadow-lg transition-colors tracking-wide text-lg">
-              <Phone size={20} />
-              <span>Call Support: 410-429-8159</span>
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/book-now"
+                onClick={() => trackEvent('cta_book_now_click', { location: 'home_footer' })}
+                className="inline-flex items-center justify-center space-x-3 bg-[#D4AF37] hover:bg-[#F5F5F5] text-[#0B0B0D] font-bold py-4 px-8 rounded-full shadow-lg transition-colors tracking-wide text-lg"
+              >
+                <span>Book Now</span>
+              </Link>
+              <a
+                href="tel:+14104298159"
+                onClick={() => trackEvent('cta_phone_click', { location: 'home_footer' })}
+                className="inline-flex items-center justify-center space-x-3 bg-[#0B0B0D] hover:bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37] font-medium py-4 px-8 rounded-full shadow-lg transition-colors tracking-wide text-lg"
+              >
+                <Phone size={20} />
+                <span>Call Support: 410-429-8159</span>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
